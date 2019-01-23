@@ -11,12 +11,12 @@ int waitGreen=5; // Grøn ventetid
 
 // FUNKTIONER
 // tone : Funktion der laver lyd med vores buzzer (Kig i reference)
-void soundFast(int delay, int interval){
+void soundFast(int delayTimer, int interval){
     // Hurtig skiftene lyd
     // param delay : Ventetid i millisekunder
     // param invterval : iteration interval
 
-    int iterations = delay / interval; // Regn iterationer ud
+    int iterations = delayTimer / interval; // Regn iterationer ud
     for (int i = 0; i <= iterations; i++){ // Loop det
         int waitTime = (int) interval/2; // Divider ventetid med 2 (Kast til Integer)
         tone(buzzerPin, 1000, waitTime); // Lav lyd med buzzer
@@ -24,12 +24,12 @@ void soundFast(int delay, int interval){
     }
 }
 
-void soundSlow(int delay, int interval){
+void soundSlow(int delayTimer, int interval){
     // langsom skiftene lyd
     // param delay : Ventetid i millisekunder
     // param invterval : iteration interval
 
-    int iterations = delay / interval; // Regn iterationer ud
+    int iterations = delayTimer / interval; // Regn iterationer ud
     for (int i = 0; i <= iterations; i++){
         int waitTime = (int) interval/2; // Divider ventetid med 2
         tone(buzzerPin, 1000, waitTime); // Lav lyd med buzzer
@@ -65,7 +65,7 @@ void loop() {
     digitalWrite(redPin, HIGH);
     digitalWrite(yellowPin, LOW);
 
-    soundSlow(1000*waitRed, 100); // Kør lyd i waitRed*1000 millisekunder med interval 100millisekunder
+    soundSlow(1000*waitRed, 400); // Kør lyd i waitRed*1000 millisekunder med interval 400 millisekunder
 
     digitalWrite(yellowPin, HIGH);
 
@@ -75,7 +75,7 @@ void loop() {
     digitalWrite(yellowPin, LOW);
     digitalWrite(greenPin, HIGH);
 
-    soundFast(1000*waitGreen);
+    soundFast(1000*waitGreen, 100); // Kør lyd i waitRed*1000 millisekunder med interval 100 millisekunder
 
     digitalWrite(greenPin, LOW);
     digitalWrite(yellowPin, HIGH);

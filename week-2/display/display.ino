@@ -2,6 +2,8 @@
 // Arduino reference : https://www.arduino.cc/reference/en/
 // LiquidCrystal reference : https://www.arduino.cc/en/Reference/LiquidCrystal
 
+#include <LiquidCrystal.h> // Inkluder LiquadCrystal biblotek
+
 // Sæt porte op
 const int rs = 12;
 const int en = 11;
